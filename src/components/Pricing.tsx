@@ -51,7 +51,7 @@ const PricingCard: React.FC<{
         ))}
       </ul>
       <Button className={`w-full ${isPopular ? 'bg-primary hover:bg-primary/90' : 'bg-secondary hover:bg-secondary/90'}`}>
-        Get Started
+       Coming soon...
       </Button>
     </div>
   );
@@ -61,20 +61,20 @@ const Pricing: React.FC = () => {
   return (
     <section className="py-12 px-4" id="pricing">
       <div className="container mx-auto">
-        <h2 className="section-heading text-center">Pricing Summary</h2>
+        <h2 className="section-heading text-center">Pricing Summary(Pay as you go)</h2>
         <p className="section-subheading text-center">
-          Simple, transparent pricing with no long-term commitments.
+          Invest in your startup.Invest in your dream.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
           <PricingCard
             title="Starter"
             description="Perfect for early-stage startups"
-            price="$399"
+            price="$19.99"
             features={[
-              "30 Real Product Testers",
+              "15 Real customer feedback",
               "Basic Feedback Reporting",
-              "1 Target Customer Segment",
+              "1 Target Customer Segment + 10 customers/clients",
               "Email Support",
             ]}
             color="bg-secondary"
@@ -83,11 +83,11 @@ const Pricing: React.FC = () => {
           <PricingCard
             title="Growth"
             description="Ideal for validation & growth"
-            price="$649"
+            price="$29.99"
             features={[
-              "50 Real Product Testers",
+              "30 Real customer feedback",
               "Enhanced Feedback Analytics",
-              "2 Target Customer Segments",
+              " Target Customer Segments + 20 customers/clients",
               "Email + Chat Support",
               "Conversion Strategy Call"
             ]}
@@ -97,23 +97,42 @@ const Pricing: React.FC = () => {
           <PricingCard
             title="Scale"
             description="For startups ready to scale"
-            price="$999"
+            price="$49.99"
             features={[
-              "100 Real Product Testers",
+              "50 Real customer feedback",
               "Premium Feedback & Analytics",
-              "3 Target Customer Segments",
+              "3 Target Customer Segments + 35 customers/clients",
               "Priority Support",
               "2 Conversion Strategy Calls",
-              "Custom User Acquisition Plan"
+              "Custom User Acquisition Plan",
+              "Customized to your needs"
             ]}
             color="bg-secondary"
             delay={400}
           />
+          <PricingCard
+          title="Scale"
+          description="For Users Who Want Million daily page visitors"
+          price="$custom"
+          features={[
+            "Customized to your needs",
+            "Full product distribution across multiple platforms and networks ",
+            "SEO optimization tailored for your product",
+            "Viral campaigns and giveaways to drive sign-ups",
+            "unlimited Conversion Strategy Calls",
+            "Access to influencers and organic marketing tools",
+            "Multiple Newsletter Launch: Targeted product launch emails sent to multiple niche newsletters",
+            "Online reputation management (responding to comments, reviews, etc.)",
+            "And more..."
+          ]}
+          color="bg-secondary"
+          delay={400}
+        />
         </div>
         
         <div className="mt-8 text-center">
           <p className="text-muted-foreground">
-            Need a custom solution? <Button variant="link" className="p-0">Contact us</Button>
+            we validate your product before we launch it. 
           </p>
         </div>
       </div>

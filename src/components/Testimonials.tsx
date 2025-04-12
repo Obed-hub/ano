@@ -46,7 +46,7 @@ const Testimonials: React.FC = () => {
       <div className="container mx-auto">
         <h2 className="section-heading text-center">What Founders Say</h2>
         <p className="section-subheading text-center">
-          Hear from founders who have accelerated their growth with StartupWifi.
+          Hear from founders who have accelerated their growth with StartupWifi (early customers).
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">

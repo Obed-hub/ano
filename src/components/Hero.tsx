@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
         </h1>
         <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: "200ms" }}>
           StartupWifi connects SaaS founders with {" "}
-          <span className="font-semibold text-foreground">30/50/100 real product testers</span>
+          <span className="font-semibold text-foreground">real product testers/validators</span>
           {" "} AND {" "}
           <span className="font-semibold text-foreground">ready-to-convert customers</span>.
         </p>
