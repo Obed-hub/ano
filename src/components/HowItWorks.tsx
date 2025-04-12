@@ -34,7 +34,7 @@ const Step: React.FC<{
   }, [delay]);
 
   return (
-    <div className="glass-card p-6 flex items-start gap-4 reveal-animation opacity-0">
+    <div className="glass-card p-5 flex items-start gap-4 reveal-animation opacity-0">
       <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold flex-shrink-0">
         {number}
       </div>
@@ -53,14 +53,14 @@ const HowItWorks: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section className="py-16 px-4 bg-muted/30" id="how-it-works">
+    <section className="py-12 px-4 bg-muted/30" id="how-it-works">
       <div className="container mx-auto">
         <h2 className="section-heading text-center">How It Works</h2>
         <p className="section-subheading text-center">
           Get started in three simple steps to connect with real testers and customers.
         </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10 items-center">
           <div className="space-y-4 order-2 lg:order-1">
             <Step
               number={1}
@@ -84,23 +84,24 @@ const HowItWorks: React.FC = () => {
               delay={400}
             />
             
-            <div className="mt-8 text-center lg:text-left">
+            <div className="mt-6 text-center lg:text-left">
               <Button className="bg-primary hover:bg-primary/90" asChild>
                 <a href="#waitlist">Join Waitlist Now</a>
               </Button>
             </div>
           </div>
           
-          <div className="glass-card p-2 aspect-video reveal-animation-right opacity-0 order-1 lg:order-2">
+          <div className="glass-card p-3 reveal-animation-right opacity-0 order-1 lg:order-2 shadow-md">
             <div className="relative w-full h-0 pb-[56.25%] overflow-hidden rounded-lg">
               <iframe 
                 className="absolute top-0 left-0 w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ" 
                 title="StartupWifi Process"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowFullScreen>
               </iframe>
             </div>
+            <p className="text-sm text-muted-foreground mt-2 text-center">See how StartupWifi works in action</p>
           </div>
         </div>
       </div>

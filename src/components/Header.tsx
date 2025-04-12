@@ -11,9 +11,13 @@ const Header: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-14 items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="text-xl font-bold">
             <span className="text-primary">Startup</span>Wifi
@@ -44,15 +48,15 @@ const Header: React.FC = () => {
       
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden px-4 py-4 border-t bg-background/95 backdrop-blur-md">
+        <div className="md:hidden px-4 py-3 border-t bg-background/95 backdrop-blur-md">
           <nav className="flex flex-col space-y-2">
-            <Button variant="ghost" className="justify-start" onClick={toggleMenu} asChild>
+            <Button variant="ghost" className="justify-start" onClick={closeMenu} asChild>
               <a href="#how-it-works">How It Works</a>
             </Button>
-            <Button variant="ghost" className="justify-start" onClick={toggleMenu} asChild>
+            <Button variant="ghost" className="justify-start" onClick={closeMenu} asChild>
               <a href="#pricing">Pricing</a>
             </Button>
-            <Button className="justify-start mt-2 bg-primary hover:bg-primary/90" onClick={toggleMenu} asChild>
+            <Button className="justify-start mt-2 bg-primary hover:bg-primary/90" onClick={closeMenu} asChild>
               <a href="#waitlist">Join Waitlist</a>
             </Button>
           </nav>

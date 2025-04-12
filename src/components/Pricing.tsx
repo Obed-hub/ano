@@ -10,7 +10,8 @@ const PricingCard: React.FC<{
   features: string[];
   isPopular?: boolean;
   delay: number;
-}> = ({ title, description, price, features, isPopular, delay }) => {
+  color?: string;
+}> = ({ title, description, price, features, isPopular, delay, color = "bg-primary" }) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -34,7 +35,7 @@ const PricingCard: React.FC<{
   }, [delay]);
 
   return (
-    <div className={`glass-card p-6 ${isPopular ? 'border-primary ring-1 ring-primary' : ''} reveal-animation opacity-0`}>
+    <div className={`glass-card p-6 ${isPopular ? 'border-primary ring-1 ring-primary shadow-lg shadow-primary/20' : ''} reveal-animation opacity-0 hover:shadow-md transition-all duration-300 transform hover:-translate-y-2`}>
       {isPopular && (
         <div className="text-xs uppercase font-bold text-primary mb-2">Most Popular</div>
       )}
@@ -44,12 +45,12 @@ const PricingCard: React.FC<{
       <ul className="space-y-2 mb-6">
         {features.map((feature, index) => (
           <li key={index} className="flex items-start gap-2">
-            <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+            <CheckCircle2 className={`w-5 h-5 ${isPopular ? "text-primary" : "text-secondary"} flex-shrink-0 mt-0.5`} />
             <span>{feature}</span>
           </li>
         ))}
       </ul>
-      <Button className={`w-full ${isPopular ? 'bg-primary hover:bg-primary/90' : ''}`}>
+      <Button className={`w-full ${isPopular ? 'bg-primary hover:bg-primary/90' : 'bg-secondary hover:bg-secondary/90'}`}>
         Get Started
       </Button>
     </div>
@@ -58,14 +59,14 @@ const PricingCard: React.FC<{
 
 const Pricing: React.FC = () => {
   return (
-    <section className="py-16 px-4" id="pricing">
+    <section className="py-12 px-4" id="pricing">
       <div className="container mx-auto">
         <h2 className="section-heading text-center">Pricing Summary</h2>
         <p className="section-subheading text-center">
           Simple, transparent pricing with no long-term commitments.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
           <PricingCard
             title="Starter"
             description="Perfect for early-stage startups"
@@ -76,6 +77,7 @@ const Pricing: React.FC = () => {
               "1 Target Customer Segment",
               "Email Support",
             ]}
+            color="bg-secondary"
             delay={0}
           />
           <PricingCard
@@ -104,11 +106,12 @@ const Pricing: React.FC = () => {
               "2 Conversion Strategy Calls",
               "Custom User Acquisition Plan"
             ]}
+            color="bg-secondary"
             delay={400}
           />
         </div>
         
-        <div className="mt-12 text-center">
+        <div className="mt-8 text-center">
           <p className="text-muted-foreground">
             Need a custom solution? <Button variant="link" className="p-0">Contact us</Button>
           </p>

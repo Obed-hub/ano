@@ -5,14 +5,14 @@ import { ArrowRight } from "lucide-react";
 
 const Hero: React.FC = () => {
   return (
-    <section className="py-20 px-4">
+    <section className="py-16 px-4">
       <div className="container max-w-5xl mx-auto text-center">
         <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6 animate-fade-in">
           <span className="text-primary">Real Testers.</span> 
           <span className="text-secondary"> Real Customers.</span> 
           <span className="text-primary"> Real Growth.</span>
         </h1>
-        <p className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: "200ms" }}>
+        <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: "200ms" }}>
           StartupWifi connects SaaS founders with {" "}
           <span className="font-semibold text-foreground">30/50/100 real product testers</span>
           {" "} AND {" "}
@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
           </Button>
         </div>
         
-        <div className="mt-16 p-4 glass-card max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: "600ms" }}>
+        <div className="mt-12 p-4 glass-card max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: "600ms" }}>
           <p className="text-lg">
             <span className="highlight">Validate faster</span>, 
             <span className="highlight"> acquire early customers</span>, and 
