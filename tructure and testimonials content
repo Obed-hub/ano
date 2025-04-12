@@ -1,0 +1,128 @@
+[1mdiff --git a/src/components/Hero.tsx b/src/components/Hero.tsx[m
+[1mindex 32d3659..0066491 100644[m
+[1m--- a/src/components/Hero.tsx[m
+[1m+++ b/src/components/Hero.tsx[m
+[36m@@ -14,7 +14,7 @@[m [mconst Hero: React.FC = () => {[m
+         </h1>[m
+         <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: "200ms" }}>[m
+           StartupWifi connects SaaS founders with {" "}[m
+[31m-          <span className="font-semibold text-foreground">30/50/100 real product testers</span>[m
+[32m+[m[32m          <span className="font-semibold text-foreground">real product testers/validators</span>[m
+           {" "} AND {" "}[m
+           <span className="font-semibold text-foreground">ready-to-convert customers</span>.[m
+         </p>[m
+[1mdiff --git a/src/components/Pricing.tsx b/src/components/Pricing.tsx[m
+[1mindex b190f9e..93162a2 100644[m
+[1m--- a/src/components/Pricing.tsx[m
+[1m+++ b/src/components/Pricing.tsx[m
+[36m@@ -51,7 +51,7 @@[m [mconst PricingCard: React.FC<{[m
+         ))}[m
+       </ul>[m
+       <Button className={`w-full ${isPopular ? 'bg-primary hover:bg-primary/90' : 'bg-secondary hover:bg-secondary/90'}`}>[m
+[31m-        Get Started[m
+[32m+[m[32m       Coming soon...[m
+       </Button>[m
+     </div>[m
+   );[m
+[36m@@ -61,20 +61,20 @@[m [mconst Pricing: React.FC = () => {[m
+   return ([m
+     <section className="py-12 px-4" id="pricing">[m
+       <div className="container mx-auto">[m
+[31m-        <h2 className="section-heading text-center">Pricing Summary</h2>[m
+[32m+[m[32m        <h2 className="section-heading text-center">Pricing Summary(Pay as you go)</h2>[m
+         <p className="section-subheading text-center">[m
+[31m-          Simple, transparent pricing with no long-term commitments.[m
+[32m+[m[32m          Invest in your startup.Invest in your dream.[m
+         </p>[m
+ [m
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">[m
+           <PricingCard[m
+             title="Starter"[m
+             description="Perfect for early-stage startups"[m
+[31m-            price="$399"[m
+[32m+[m[32m            price="$19.99"[m
+             features={[[m
+[31m-              "30 Real Product Testers",[m
+[32m+[m[32m              "15 Real customer feedback",[m
+               "Basic Feedback Reporting",[m
+[31m-              "1 Target Customer Segment",[m
+[32m+[m[32m              "1 Target Customer Segment + 10 customers/clients",[m
+               "Email Support",[m
+             ]}[m
+             color="bg-secondary"[m
+[36m@@ -83,11 +83,11 @@[m [mconst Pricing: React.FC = () => {[m
+           <PricingCard[m
+             title="Growth"[m
+             description="Ideal for validation & growth"[m
+[31m-            price="$649"[m
+[32m+[m[32m            price="$29.99"[m
+             features={[[m
+[31m-              "50 Real Product Testers",[m
+[32m+[m[32m              "30 Real customer feedback",[m
+               "Enhanced Feedback Analytics",[m
+[31m-              "2 Target Customer Segments",[m
+[32m+[m[32m              " Target Customer Segments + 20 customers/clients",[m
+               "Email + Chat Support",[m
+               "Conversion Strategy Call"[m
+             ]}[m
+[36m@@ -97,23 +97,42 @@[m [mconst Pricing: React.FC = () => {[m
+           <PricingCard[m
+             title="Scale"[m
+             description="For startups ready to scale"[m
+[31m-            price="$999"[m
+[32m+[m[32m            price="$49.99"[m
+             features={[[m
+[31m-              "100 Real Product Testers",[m
+[32m+[m[32m              "50 Real customer feedback",[m
+               "Premium Feedback & Analytics",[m
+[31m-              "3 Target Customer Segments",[m
+[32m+[m[32m              "3 Target Customer Segments + 35 customers/clients",[m
+               "Priority Support",[m
+               "2 Conversion Strategy Calls",[m
+[31m-              "Custom User Acquisition Plan"[m
+[32m+[m[32m              "Custom User Acquisition Plan",[m
+[32m+[m[32m              "Customized to your needs"[m
+             ]}[m
+             color="bg-secondary"[m
+             delay={400}[m
+           />[m
+[32m+[m[32m          <PricingCard[m
+[32m+[m[32m          title="Scale"[m
+[32m+[m[32m          description="For Users Who Want Million daily page visitors"[m
+[32m+[m[32m          price="$custom"[m
+[32m+[m[32m          features={[[m
+[32m+[m[32m            "Customized to your needs",[m
+[32m+[m[32m            "Full product distribution across multiple platforms and networks ",[m
+[32m+[m[32m            "SEO optimization tailored for your product",[m
+[32m+[m[32m            "Viral campaigns and giveaways to drive sign-ups",[m
+[32m+[m[32m            "unlimited Conversion Strategy Calls",[m
+[32m+[m[32m            "Access to influencers and organic marketing tools",[m
+[32m+[m[32m            "Multiple Newsletter Launch: Targeted product launch emails sent to multiple niche newsletters",[m
+[32m+[m[32m            "Online reputation management (responding to comments, reviews, etc.)",[m
+[32m+[m[32m            "And more..."[m
+[32m+[m[32m          ]}[m
+[32m+[m[32m          color="bg-secondary"[m
+[32m+[m[32m          delay={400}[m
+[32m+[m[32m        />[m
+         </div>[m
+         [m
+         <div className="mt-8 text-center">[m
+           <p className="text-muted-foreground">[m
+[31m-            Need a custom solution? <Button variant="link" className="p-0">Contact us</Button>[m
+[32m+[m[32m            we validate your product before we launch it.[m[41m [m
+           </p>[m
+         </div>[m
+       </div>[m
+[1mdiff --git a/src/components/Testimonials.tsx b/src/components/Testimonials.tsx[m
+[1mindex d3a66f8..9d97968 100644[m
+[1m--- a/src/components/Testimonials.tsx[m
+[1m+++ b/src/components/Testimonials.tsx[m
+[36m@@ -46,7 +46,7 @@[m [mconst Testimonials: React.FC = () => {[m
+       <div className="container mx-auto">[m
+         <h2 className="section-heading text-center">What Founders Say</h2>[m
+         <p className="section-subheading text-center">[m
+[31m-          Hear from founders who have accelerated their growth with StartupWifi.[m
+[32m+[m[32m          Hear from founders who have accelerated their growth with StartupWifi (early customers).[m
+         </p>[m
+ [m
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">[m
