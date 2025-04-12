@@ -1,6 +1,7 @@
 
 import React, { useEffect } from "react";
 import { ClipboardList, Users, BadgeCheck } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Step: React.FC<{
   number: number;
@@ -56,28 +57,48 @@ const HowItWorks: React.FC = () => {
           Get started in three simple steps to connect with real testers and customers.
         </p>
 
-        <div className="max-w-3xl mx-auto space-y-4 mt-12">
-          <Step
-            number={1}
-            title="Sign Up and Define Your Needs"
-            description="Tell us about your product and select the tester/customer package that fits your needs."
-            icon={<ClipboardList className="w-5 h-5 text-primary" />}
-            delay={0}
-          />
-          <Step
-            number={2}
-            title="Get Matched with Testers/Customers"
-            description="We match you with relevant testers and potential customers based on your product category."
-            icon={<Users className="w-5 h-5 text-primary" />}
-            delay={200}
-          />
-          <Step
-            number={3}
-            title="Collect Feedback and Grow"
-            description="Receive valuable feedback, make improvements, and convert testers into paying customers."
-            icon={<BadgeCheck className="w-5 h-5 text-primary" />}
-            delay={400}
-          />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12 items-center">
+          <div className="space-y-4 order-2 lg:order-1">
+            <Step
+              number={1}
+              title="Sign Up and Define Your Needs"
+              description="Tell us about your product and select the tester/customer package that fits your needs."
+              icon={<ClipboardList className="w-5 h-5 text-primary" />}
+              delay={0}
+            />
+            <Step
+              number={2}
+              title="Get Matched with Testers/Customers"
+              description="We match you with relevant testers and potential customers based on your product category."
+              icon={<Users className="w-5 h-5 text-primary" />}
+              delay={200}
+            />
+            <Step
+              number={3}
+              title="Collect Feedback and Grow"
+              description="Receive valuable feedback, make improvements, and convert testers into paying customers."
+              icon={<BadgeCheck className="w-5 h-5 text-primary" />}
+              delay={400}
+            />
+            
+            <div className="mt-8 text-center lg:text-left">
+              <Button className="bg-primary hover:bg-primary/90">
+                Join Waitlist Now
+              </Button>
+            </div>
+          </div>
+          
+          <div className="glass-card p-2 aspect-video reveal-animation-right opacity-0 order-1 lg:order-2">
+            <div className="relative w-full h-0 pb-[56.25%] overflow-hidden rounded-lg">
+              <iframe 
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                title="StartupWifi Process"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen>
+              </iframe>
+            </div>
+          </div>
         </div>
       </div>
     </section>
