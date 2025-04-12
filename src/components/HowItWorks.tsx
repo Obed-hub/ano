@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import { ClipboardList, Users, BadgeCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Step: React.FC<{
   number: number;
@@ -49,6 +50,8 @@ const Step: React.FC<{
 };
 
 const HowItWorks: React.FC = () => {
+  const isMobile = useIsMobile();
+
   return (
     <section className="py-16 px-4 bg-muted/30" id="how-it-works">
       <div className="container mx-auto">
@@ -82,8 +85,8 @@ const HowItWorks: React.FC = () => {
             />
             
             <div className="mt-8 text-center lg:text-left">
-              <Button className="bg-primary hover:bg-primary/90">
-                Join Waitlist Now
+              <Button className="bg-primary hover:bg-primary/90" asChild>
+                <a href="#waitlist">Join Waitlist Now</a>
               </Button>
             </div>
           </div>
@@ -92,7 +95,7 @@ const HowItWorks: React.FC = () => {
             <div className="relative w-full h-0 pb-[56.25%] overflow-hidden rounded-lg">
               <iframe 
                 className="absolute top-0 left-0 w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" 
                 title="StartupWifi Process"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowFullScreen>

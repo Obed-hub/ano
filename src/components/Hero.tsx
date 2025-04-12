@@ -19,12 +19,14 @@ const Hero: React.FC = () => {
           <span className="font-semibold text-foreground">ready-to-convert customers</span>.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style={{ animationDelay: "400ms" }}>
-          <Button size="lg" className="px-8 py-6 text-lg rounded-full bg-primary hover:bg-primary/90">
-            Join the Waitlist
-            <ArrowRight className="ml-2 h-5 w-5" />
+          <Button size="lg" className="w-full sm:w-auto px-8 py-6 text-lg rounded-full bg-primary hover:bg-primary/90" asChild>
+            <a href="#waitlist">
+              Join the Waitlist
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
           </Button>
-          <Button size="lg" variant="outline" className="px-8 py-6 text-lg rounded-full">
-            Learn More
+          <Button size="lg" variant="outline" className="w-full sm:w-auto px-8 py-6 text-lg rounded-full" asChild>
+            <a href="#how-it-works">Learn More</a>
           </Button>
         </div>
         

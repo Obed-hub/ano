@@ -29,15 +29,15 @@ const Header: React.FC = () => {
         
         {/* Desktop navigation */}
         <div className="hidden md:flex items-center gap-4">
-          <Button variant="ghost" size="sm">
-            How It Works
+          <Button variant="ghost" size="sm" asChild>
+            <a href="#how-it-works">How It Works</a>
           </Button>
-          <Button variant="ghost" size="sm">
-            Pricing
+          <Button variant="ghost" size="sm" asChild>
+            <a href="#pricing">Pricing</a>
           </Button>
           <ThemeToggle />
-          <Button className="bg-primary hover:bg-primary/90" size="sm">
-            Join Waitlist
+          <Button className="bg-primary hover:bg-primary/90" size="sm" asChild>
+            <a href="#waitlist">Join Waitlist</a>
           </Button>
         </div>
       </div>
@@ -46,14 +46,14 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden px-4 py-4 border-t bg-background/95 backdrop-blur-md">
           <nav className="flex flex-col space-y-2">
-            <Button variant="ghost" className="justify-start" onClick={toggleMenu}>
-              How It Works
+            <Button variant="ghost" className="justify-start" onClick={toggleMenu} asChild>
+              <a href="#how-it-works">How It Works</a>
             </Button>
-            <Button variant="ghost" className="justify-start" onClick={toggleMenu}>
-              Pricing
+            <Button variant="ghost" className="justify-start" onClick={toggleMenu} asChild>
+              <a href="#pricing">Pricing</a>
             </Button>
-            <Button className="justify-start mt-2 bg-primary hover:bg-primary/90" onClick={toggleMenu}>
-              Join Waitlist
+            <Button className="justify-start mt-2 bg-primary hover:bg-primary/90" onClick={toggleMenu} asChild>
+              <a href="#waitlist">Join Waitlist</a>
             </Button>
           </nav>
         </div>

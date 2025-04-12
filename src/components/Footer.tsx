@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -21,9 +22,21 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><a href="#benefits" className="text-muted-foreground hover:text-primary transition-colors">Benefits</a></li>
-              <li><a href="#how-it-works" className="text-muted-foreground hover:text-primary transition-colors">How It Works</a></li>
-              <li><a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a></li>
+              <li>
+                <Button variant="link" className="p-0 h-auto text-muted-foreground hover:text-primary" asChild>
+                  <a href="#benefits">Benefits</a>
+                </Button>
+              </li>
+              <li>
+                <Button variant="link" className="p-0 h-auto text-muted-foreground hover:text-primary" asChild>
+                  <a href="#how-it-works">How It Works</a>
+                </Button>
+              </li>
+              <li>
+                <Button variant="link" className="p-0 h-auto text-muted-foreground hover:text-primary" asChild>
+                  <a href="#pricing">Pricing</a>
+                </Button>
+              </li>
             </ul>
           </div>
           
@@ -31,9 +44,11 @@ const Footer: React.FC = () => {
             <h4 className="font-bold mb-4">Contact</h4>
             <div className="flex items-center gap-2 text-muted-foreground">
               <Mail className="w-4 h-4" />
-              <a href="mailto:contact@startupwifi.com" className="hover:text-primary transition-colors">
-                contact@startupwifi.com
-              </a>
+              <Button variant="link" className="p-0 h-auto text-muted-foreground hover:text-primary" asChild>
+                <a href="mailto:contact@startupwifi.com">
+                  contact@startupwifi.com
+                </a>
+              </Button>
             </div>
           </div>
         </div>
@@ -43,8 +58,12 @@ const Footer: React.FC = () => {
             © {currentYear} StartupWifi. All rights reserved.
           </div>
           <div className="flex gap-4">
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">Privacy Policy</a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">Terms of Service</a>
+            <Button variant="link" className="p-0 h-auto text-muted-foreground hover:text-primary text-sm" asChild>
+              <a href="#">Privacy Policy</a>
+            </Button>
+            <Button variant="link" className="p-0 h-auto text-muted-foreground hover:text-primary text-sm" asChild>
+              <a href="#">Terms of Service</a>
+            </Button>
           </div>
         </div>
       </div>
