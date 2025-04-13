@@ -4,9 +4,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Progress } from "@/components/ui/progress";
 import { toast } from "sonner";
-import { Share2, Twitter, Linkedin, Facebook } from "lucide-react";
+import { Share2, Twitter, Linkedin, Facebook, Users } from "lucide-react";
 
 const WaitlistForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -70,6 +69,40 @@ const WaitlistForm: React.FC = () => {
     }
   };
 
+  const renderPositionVisual = () => {
+    const totalAvatars = 10;
+    const userPosition = Math.min(Math.ceil((position / 1000) * totalAvatars), totalAvatars);
+    
+    return (
+      <div className="relative w-full h-24 mb-4">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="flex items-center space-x-2">
+            {Array.from({ length: totalAvatars }).map((_, index) => (
+              <div
+                key={index}
+                className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+                  index < userPosition
+                    ? 'bg-primary/20 border-2 border-primary'
+                    : 'bg-muted border-2 border-muted-foreground/20'
+                }`}
+              >
+                <Users className={`w-4 h-4 ${
+                  index < userPosition ? 'text-primary' : 'text-muted-foreground/20'
+                }`} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="absolute -bottom-6 left-0 right-0 text-center">
+          <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
+            <Users className="w-4 h-4 mr-2" />
+            Position #{position}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   if (formSubmitted) {
     return (
       <div className="glass-card p-8 max-w-md mx-auto text-center animate-fade-in">
@@ -79,13 +112,9 @@ const WaitlistForm: React.FC = () => {
         </p>
         
         <div className="mb-8">
-          <div className="flex justify-between mb-2">
-            <span className="text-sm text-muted-foreground">Your Position</span>
-            <span className="text-sm font-medium">#{position}</span>
-          </div>
-          <Progress value={(position / 1000) * 100} className="h-2" />
-          <p className="text-sm text-muted-foreground mt-2">
-            {position} people ahead of you
+          {renderPositionVisual()}
+          <p className="text-sm text-muted-foreground mt-8">
+            {position} people ahead of you in line
           </p>
         </div>
 

@@ -70,9 +70,9 @@ const Pricing: React.FC = () => {
           <PricingCard
             title="Starter"
             description="Perfect for early-stage startups"
-            price="$19.99"
+            price="coming soon..."
             features={[
-              "15 Real customer feedback",
+              "20 Real customer feedback",
               "Basic Feedback Reporting",
               "7 Target Customer groups/niches + 10 customers/clients",
               "Email Support",
@@ -84,7 +84,7 @@ const Pricing: React.FC = () => {
           <PricingCard
             title="Growth"
             description="Ideal for validation & growth"
-            price="$29.99"
+            price="coming soon..."
             features={[
               "30 Real customer feedback",
               "Enhanced Feedback Analytics",
@@ -98,7 +98,7 @@ const Pricing: React.FC = () => {
           <PricingCard
             title="Scale"
             description="For startups ready to scale"
-            price="$49.99"
+            price="coming soon..."
             features={[
               "50 Real customer feedback",
               "Premium Feedback & Analytics",
