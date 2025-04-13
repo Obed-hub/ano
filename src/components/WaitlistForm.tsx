@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { Share2, Twitter, Linkedin, Facebook, Users } from "lucide-react";
 
 const WaitlistForm: React.FC = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [startupName, setStartupName] = useState("");
   const [role, setRole] = useState("");
@@ -19,8 +20,8 @@ const WaitlistForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!email) {
-      toast.error("Please enter your email address");
+    if (!name || !email) {
+      toast.error("Please enter your name and email address");
       return;
     }
     
@@ -28,7 +29,8 @@ const WaitlistForm: React.FC = () => {
     
     try {
       const formData = new FormData();
-      formData.append("form-name", "contact");
+      formData.append("form-name", "waitlist");
+      formData.append("name", name);
       formData.append("email", email);
       formData.append("startupName", startupName);
       formData.append("role", role);
@@ -171,18 +173,33 @@ const WaitlistForm: React.FC = () => {
       </p>
       
       <form 
-        name="contact"
+        name="waitlist"
         method="POST"
         data-netlify="true"
-        data-netlify-honeypot="bot-field"
+        netlify-honeypot="bot-field"
         onSubmit={handleSubmit}
         className="space-y-4"
       >
-        <input type="hidden" name="form-name" value="contact" />
-        <input type="hidden" name="bot-field" />
+        <input type="hidden" name="form-name" value="waitlist" />
+        <p hidden>
+          <label>Don't fill this out: <input name="bot-field" /></label>
+        </p>
         
         <div>
-          <Label htmlFor="email">Email (Gmail) *</Label>
+          <Label htmlFor="name">Your Name *</Label>
+          <Input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Your Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+
+        <div>
+          <Label htmlFor="email">Your Email *</Label>
           <Input
             id="email"
             name="email"
