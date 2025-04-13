@@ -27,9 +27,8 @@ const WaitlistForm: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // This is for Netlify forms
       const formData = new FormData();
-      formData.append("form-name", "waitlist");
+      formData.append("form-name", "contact");
       formData.append("email", email);
       formData.append("startupName", startupName);
       formData.append("role", role);
@@ -172,13 +171,15 @@ const WaitlistForm: React.FC = () => {
       </p>
       
       <form 
-        onSubmit={handleSubmit} 
-        data-netlify="true" 
-        name="waitlist" 
+        name="contact"
         method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        onSubmit={handleSubmit}
         className="space-y-4"
       >
-        <input type="hidden" name="form-name" value="waitlist" />
+        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="bot-field" />
         
         <div>
           <Label htmlFor="email">Email (Gmail) *</Label>
