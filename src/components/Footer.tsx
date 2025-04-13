@@ -1,7 +1,7 @@
-
 import React from "react";
 import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -24,17 +24,17 @@ const Footer: React.FC = () => {
             <ul className="space-y-1">
               <li>
                 <Button variant="link" className="p-0 h-auto text-muted-foreground hover:text-primary" asChild>
-                  <a href="#benefits">Benefits</a>
+                  <Link to="/#benefits">Benefits</Link>
                 </Button>
               </li>
               <li>
                 <Button variant="link" className="p-0 h-auto text-muted-foreground hover:text-primary" asChild>
-                  <a href="#how-it-works">How It Works</a>
+                  <Link to="/#how-it-works">How It Works</Link>
                 </Button>
               </li>
               <li>
                 <Button variant="link" className="p-0 h-auto text-muted-foreground hover:text-primary" asChild>
-                  <a href="#pricing">Pricing</a>
+                  <Link to="/#pricing">Pricing</Link>
                 </Button>
               </li>
             </ul>
@@ -59,10 +59,10 @@ const Footer: React.FC = () => {
           </div>
           <div className="flex gap-4">
             <Button variant="link" className="p-0 h-auto text-muted-foreground hover:text-primary text-sm" asChild>
-              <a href="#">Privacy Policy</a>
+              <Link to="/privacy">Privacy Policy</Link>
             </Button>
             <Button variant="link" className="p-0 h-auto text-muted-foreground hover:text-primary text-sm" asChild>
-              <a href="#">Terms of Service</a>
+              <Link to="/terms">Terms of Service</Link>
             </Button>
           </div>
         </div>

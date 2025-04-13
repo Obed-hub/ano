@@ -74,8 +74,9 @@ const Pricing: React.FC = () => {
             features={[
               "15 Real customer feedback",
               "Basic Feedback Reporting",
-              "1 Target Customer Segment + 10 customers/clients",
+              "7 Target Customer groups/niches + 10 customers/clients",
               "Email Support",
+              "1 Conversion Strategy Call",
             ]}
             color="bg-secondary"
             delay={0}
@@ -87,7 +88,7 @@ const Pricing: React.FC = () => {
             features={[
               "30 Real customer feedback",
               "Enhanced Feedback Analytics",
-              " Target Customer Segments + 20 customers/clients",
+              " 15 Target Customer groups/niches + 20 customers/clients",
               "Email + Chat Support",
               "Conversion Strategy Call"
             ]}
@@ -101,9 +102,9 @@ const Pricing: React.FC = () => {
             features={[
               "50 Real customer feedback",
               "Premium Feedback & Analytics",
-              "3 Target Customer Segments + 35 customers/clients",
+              "25 Target Customer groups/niches + 35 customers/clients",
               "Priority Support",
-              "2 Conversion Strategy Calls",
+              "3 Conversion Strategy Calls",
               "Custom User Acquisition Plan",
               "Customized to your needs"
             ]}
