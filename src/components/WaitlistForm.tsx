@@ -1,17 +1,21 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { Progress } from "@/components/ui/progress";
 import { toast } from "sonner";
+import { Share2, Twitter, Linkedin, Facebook } from "lucide-react";
 
 const WaitlistForm: React.FC = () => {
   const [email, setEmail] = useState("");
   const [startupName, setStartupName] = useState("");
   const [role, setRole] = useState("");
+  const [enquiry, setEnquiry] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [position, setPosition] = useState(0);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,18 +34,39 @@ const WaitlistForm: React.FC = () => {
       formData.append("email", email);
       formData.append("startupName", startupName);
       formData.append("role", role);
+      formData.append("enquiry", enquiry);
       
       await fetch("/", {
         method: "POST",
         body: formData,
       });
       
+      // Generate a random position between 1 and 1000
+      const randomPosition = Math.floor(Math.random() * 1000) + 1;
+      setPosition(randomPosition);
       setFormSubmitted(true);
       toast.success("Thanks for joining our waitlist! We'll be in touch soon.");
     } catch (error) {
       toast.error("There was an error submitting the form. Please try again.");
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleShare = (platform: string) => {
+    const url = window.location.href;
+    const text = "I just joined the StartupWifi waitlist! Join me in revolutionizing startup connectivity. #StartupWifi";
+    
+    switch (platform) {
+      case 'twitter':
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+        break;
+      case 'linkedin':
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+        break;
+      case 'facebook':
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+        break;
     }
   };
 
@@ -52,9 +77,60 @@ const WaitlistForm: React.FC = () => {
         <p className="mb-6">
           You've successfully joined the StartupWifi waitlist. We'll keep you updated on our launch and any early access opportunities.
         </p>
-        <Button onClick={() => setFormSubmitted(false)} variant="outline">
-          Back to Form
-        </Button>
+        
+        <div className="mb-8">
+          <div className="flex justify-between mb-2">
+            <span className="text-sm text-muted-foreground">Your Position</span>
+            <span className="text-sm font-medium">#{position}</span>
+          </div>
+          <Progress value={(position / 1000) * 100} className="h-2" />
+          <p className="text-sm text-muted-foreground mt-2">
+            {position} people ahead of you
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <p className="text-sm text-muted-foreground">
+            Share with your network and move up in line!
+          </p>
+          <div className="flex justify-center gap-4">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => handleShare('twitter')}
+              className="hover:bg-blue-50 hover:text-blue-500"
+            >
+              <Twitter className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => handleShare('linkedin')}
+              className="hover:bg-blue-50 hover:text-blue-500"
+            >
+              <Linkedin className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => handleShare('facebook')}
+              className="hover:bg-blue-50 hover:text-blue-500"
+            >
+              <Facebook className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => {
+                navigator.clipboard.writeText(window.location.href);
+                toast.success("Link copied to clipboard!");
+              }}
+              className="hover:bg-gray-50"
+            >
+              <Share2 className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
       </div>
     );
   }
@@ -113,6 +189,18 @@ const WaitlistForm: React.FC = () => {
               <SelectItem value="other">Other</SelectItem>
             </SelectContent>
           </Select>
+        </div>
+
+        <div>
+          <Label htmlFor="enquiry">Your Question or Enquiry (Optional)</Label>
+          <Textarea
+            id="enquiry"
+            name="enquiry"
+            placeholder="Ask us anything about StartupWifi..."
+            value={enquiry}
+            onChange={(e) => setEnquiry(e.target.value)}
+            className="min-h-[100px]"
+          />
         </div>
         
         <Button 
