@@ -174,7 +174,7 @@ const WaitlistForm: React.FC = () => {
       
       <form 
         name="waitlist"
-        method="POST"
+        action="POST"
         data-netlify="true"
         netlify-honeypot="bot-field"
         onSubmit={handleSubmit}
