@@ -1,139 +1,132 @@
-
-import React, { useEffect } from "react";
-import { CheckCircle2 } from "lucide-react";
+import React from "react";
+import { 
+  CheckCircle2, 
+  Zap, 
+  Rocket, 
+  Crown, 
+  Users, 
+  BarChart, 
+  MessageSquare, 
+  Target, 
+  Globe, 
+  Mail, 
+  Shield, 
+  TrendingUp,
+  Star
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const PricingCard: React.FC<{
+const FeatureCard: React.FC<{
   title: string;
   description: string;
-  price: string;
-  features: string[];
-  isPopular?: boolean;
+  icon: React.ReactNode;
   delay: number;
-  color?: string;
-}> = ({ title, description, price, features, isPopular, delay, color = "bg-primary" }) => {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add("animate");
-            }, delay);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const elements = document.querySelectorAll(".reveal-animation");
-    elements.forEach((el) => observer.observe(el));
-
-    return () => {
-      elements.forEach((el) => observer.unobserve(el));
-    };
-  }, [delay]);
-
+}> = ({ title, description, icon, delay }) => {
   return (
-    <div className={`glass-card p-6 ${isPopular ? 'border-primary ring-1 ring-primary shadow-lg shadow-primary/20' : ''} reveal-animation opacity-0 hover:shadow-md transition-all duration-300 transform hover:-translate-y-2`}>
-      {isPopular && (
-        <div className="text-xs uppercase font-bold text-primary mb-2">Most Popular</div>
-      )}
-      <h3 className="text-xl font-bold">{title}</h3>
-      <p className="text-muted-foreground mb-4">{description}</p>
-      <div className="text-3xl font-bold mb-6">{price}</div>
-      <ul className="space-y-2 mb-6">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-start gap-2">
-            <CheckCircle2 className={`w-5 h-5 ${isPopular ? "text-primary" : "text-secondary"} flex-shrink-0 mt-0.5`} />
-            <span>{feature}</span>
-          </li>
-        ))}
-      </ul>
-      <Button className={`w-full ${isPopular ? 'bg-primary hover:bg-primary/90' : 'bg-secondary hover:bg-secondary/90'}`}>
-       Coming soon...
-      </Button>
+    <div className="glass-card p-6 reveal-animation opacity-0 hover:shadow-md transition-all duration-300 transform hover:-translate-y-2">
+      <div className="flex items-center gap-3 mb-4">
+        {icon}
+        <h3 className="text-xl font-bold">{title}</h3>
+      </div>
+      <p className="text-muted-foreground">{description}</p>
     </div>
   );
 };
 
-const Pricing: React.FC = () => {
-  return (
-    <section className="py-12 px-4" id="pricing">
-      <div className="container mx-auto">
-        <h2 className="section-heading text-center">Pricing Summary(Pay as you go)</h2>
-        <p className="section-subheading text-center">
-          Invest in your startup.Invest in your dream.
-        </p>
+const Goals: React.FC = () => {
+  const features = [
+    {
+      title: "Customer Feedback Collection",
+      description: "Gather real, actionable feedback from your target audience to validate and improve your product.",
+      icon: <Users className="w-6 h-6 text-primary" />,
+      delay: 0
+    },
+    {
+      title: "Advanced Analytics",
+      description: "Get deep insights into user behavior, preferences, and market trends with our comprehensive analytics suite.",
+      icon: <BarChart className="w-6 h-6 text-primary" />,
+      delay: 100
+    },
+    {
+      title: "Target Audience Segmentation",
+      description: "Get your first  1000 targeted user/customer.",
+      icon: <Target className="w-6 h-6 text-primary" />,
+      delay: 200
+    },
+    {
+      title: "Multi-Platform Distribution",
+      description: "Launch your product across multiple platforms and networks for maximum reach and impact.",
+      icon: <Globe className="w-6 h-6 text-primary" />,
+      delay: 300
+    },
+    {
+      title: "Strategic Support",
+      description: "Access expert guidance through strategy calls and priority support channels.",
+      icon: <MessageSquare className="w-6 h-6 text-primary" />,
+      delay: 400
+    },
+    {
+      title: "Viral Marketing Campaigns",
+      description: "Create and execute viral campaigns and giveaways to drive rapid user acquisition.",
+      icon: <Rocket className="w-6 h-6 text-primary" />,
+      delay: 500
+    },
+    {
+      title: "Newsletter Integration",
+      description: "Leverage multiple newsletter launches to reach targeted audiences effectively.",
+      icon: <Mail className="w-6 h-6 text-primary" />,
+      delay: 600
+    },
+    {
+      title: "Reputation Management",
+      description: "Maintain and enhance your online presence with professional reputation management.",
+      icon: <Shield className="w-6 h-6 text-primary" />,
+      delay: 700
+    },
+    {
+      title: "Growth Strategy",
+      description: "Develop and implement custom user acquisition plans for sustainable growth.",
+      icon: <TrendingUp className="w-6 h-6 text-primary" />,
+      delay: 800
+    },
+    {
+      title: "Influencer Network",
+      description: "Access our network of influencers and organic marketing tools for amplified reach.",
+      icon: <Star className="w-6 h-6 text-primary" />,
+      delay: 900
+    }
+  ];
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
-          <PricingCard
-            title="Starter"
-            description="Perfect for early-stage startups"
-            price="coming soon..."
-            features={[
-              "20 Real customer feedback",
-              "Basic Feedback Reporting",
-              "7 Target Customer groups/niches + 10 customers/clients",
-              "Email Support",
-              "1 Conversion Strategy Call",
-            ]}
-            color="bg-secondary"
-            delay={0}
-          />
-          <PricingCard
-            title="Growth"
-            description="Ideal for validation & growth"
-            price="coming soon..."
-            features={[
-              "30 Real customer feedback",
-              "Enhanced Feedback Analytics",
-              " 15 Target Customer groups/niches + 20 customers/clients",
-              "Email + Chat Support",
-              "Conversion Strategy Call"
-            ]}
-            isPopular={true}
-            delay={200}
-          />
-          <PricingCard
-            title="Scale"
-            description="For startups ready to scale"
-            price="coming soon..."
-            features={[
-              "50 Real customer feedback",
-              "Premium Feedback & Analytics",
-              "25 Target Customer groups/niches + 35 customers/clients",
-              "Priority Support",
-              "3 Conversion Strategy Calls",
-              "Custom User Acquisition Plan",
-              "Customized to your needs"
-            ]}
-            color="bg-secondary"
-            delay={400}
-          />
-          <PricingCard
-          title="Scale"
-          description="For Users Who Want Million daily page visitors"
-          price="$custom"
-          features={[
-            "Customized to your needs",
-            "Full product distribution across multiple platforms and networks ",
-            "SEO optimization tailored for your product",
-            "Viral campaigns and giveaways to drive sign-ups",
-            "unlimited Conversion Strategy Calls",
-            "Access to influencers and organic marketing tools",
-            "Multiple Newsletter Launch: Targeted product launch emails sent to multiple niche newsletters",
-            "Online reputation management (responding to comments, reviews, etc.)",
-            "And more..."
-          ]}
-          color="bg-secondary"
-          delay={400}
-        />
+  return (
+    <section className="py-12 px-4" id="goals">
+      <div className="container mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="section-heading">LaunchPad Pro</h2>
+          <p className="section-subheading">
+            Everything you need to launch and grow your startup
+          </p>
+          <div className="mt-6">
+            <Button className="bg-primary hover:bg-primary/90">
+              Start Your Journey
+            </Button>
+          </div>
         </div>
-        
-        <div className="mt-8 text-center">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature, index) => (
+            <FeatureCard
+              key={index}
+              title={feature.title}
+              description={feature.description}
+              icon={feature.icon}
+              delay={feature.delay}
+            />
+          ))}
+        </div>
+
+        <div className="mt-12 text-center">
           <p className="text-muted-foreground">
-            we validate your product before we launch it. 
+            Transform your startup vision into reality with our comprehensive launch platform
           </p>
         </div>
       </div>
@@ -141,4 +134,4 @@ const Pricing: React.FC = () => {
   );
 };
 
-export default Pricing;
+export default Goals;

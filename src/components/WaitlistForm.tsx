@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { Share2, Twitter, Linkedin, Facebook, Users } from "lucide-react";
+import { Share2, Twitter, Linkedin, Facebook, Users, Upload } from "lucide-react";
 
 const WaitlistForm: React.FC = () => {
   const [name, setName] = useState("");
@@ -13,6 +13,7 @@ const WaitlistForm: React.FC = () => {
   const [startupName, setStartupName] = useState("");
   const [role, setRole] = useState("");
   const [enquiry, setEnquiry] = useState("");
+  const [file, setFile] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [position, setPosition] = useState(0);
@@ -29,17 +30,23 @@ const WaitlistForm: React.FC = () => {
     
     try {
       const formData = new FormData();
-      formData.append("form-name", "waitlist");
       formData.append("name", name);
       formData.append("email", email);
-      formData.append("startupName", startupName);
+      formData.append("startup_name", startupName);
       formData.append("role", role);
       formData.append("enquiry", enquiry);
+      if (file) {
+        formData.append("file", file);
+      }
       
-      await fetch("/", {
+      const response = await fetch("https://usebasin.com/f/f3362985e01e", {
         method: "POST",
         body: formData,
       });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
       
       // Generate a random position between 1 and 1000
       const randomPosition = Math.floor(Math.random() * 1000) + 1;
@@ -48,8 +55,15 @@ const WaitlistForm: React.FC = () => {
       toast.success("Thanks for joining our waitlist! We'll be in touch soon.");
     } catch (error) {
       toast.error("There was an error submitting the form. Please try again.");
+      console.error('Form submission error:', error);
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFile(e.target.files[0]);
     }
   };
 
@@ -173,60 +187,54 @@ const WaitlistForm: React.FC = () => {
       </p>
       
       <form 
-        name="waitlist"
-        action="POST"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
         onSubmit={handleSubmit}
         className="space-y-4"
       >
-        <input type="hidden" name="form-name" value="waitlist" />
-        <p hidden>
-          <label>Don't fill this out: <input name="bot-field" /></label>
-        </p>
-        
-        <div>
-          <Label htmlFor="name">Your Name *</Label>
+        <div className="formbold-input-group">
+          <Label htmlFor="name" className="formbold-form-label">Name *</Label>
           <Input
             id="name"
             name="name"
             type="text"
-            placeholder="Your Name"
+            placeholder="Enter your name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
+            className="formbold-form-input"
           />
         </div>
 
-        <div>
-          <Label htmlFor="email">Your Email *</Label>
+        <div className="formbold-input-group">
+          <Label htmlFor="email" className="formbold-form-label">Email *</Label>
           <Input
             id="email"
             name="email"
             type="email"
-            placeholder="your@gmail.com"
+            placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            className="formbold-form-input"
           />
         </div>
         
-        <div>
-          <Label htmlFor="startupName">Startup Name (Optional)</Label>
+        <div className="formbold-input-group">
+          <Label htmlFor="startupName" className="formbold-form-label">Startup Name (Optional)</Label>
           <Input
             id="startupName"
-            name="startupName"
+            name="startup_name"
             type="text"
             placeholder="Your Startup"
             value={startupName}
             onChange={(e) => setStartupName(e.target.value)}
+            className="formbold-form-input"
           />
         </div>
         
-        <div>
-          <Label htmlFor="role">Your Role (Optional)</Label>
+        <div className="formbold-input-group">
+          <Label htmlFor="role" className="formbold-form-label">Your Role (Optional)</Label>
           <Select value={role} onValueChange={setRole}>
-            <SelectTrigger id="role" name="role">
+            <SelectTrigger id="role" name="role" className="formbold-form-select">
               <SelectValue placeholder="Select your role" />
             </SelectTrigger>
             <SelectContent>
@@ -238,21 +246,21 @@ const WaitlistForm: React.FC = () => {
           </Select>
         </div>
 
-        <div>
-          <Label htmlFor="enquiry">Your Question or Enquiry (Optional)</Label>
+        <div className="formbold-input-group">
+          <Label htmlFor="enquiry" className="formbold-form-label">Your Question or Enquiry (Optional)</Label>
           <Textarea
             id="enquiry"
             name="enquiry"
             placeholder="Ask us anything about StartupWifi..."
             value={enquiry}
             onChange={(e) => setEnquiry(e.target.value)}
-            className="min-h-[100px]"
+            className="formbold-form-input min-h-[100px]"
           />
         </div>
         
         <Button 
           type="submit" 
-          className="w-full bg-primary hover:bg-primary/90"
+          className="formbold-btn w-full"
           disabled={isSubmitting}
         >
           {isSubmitting ? "Submitting..." : "Join Waitlist"}

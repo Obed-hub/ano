@@ -1,48 +1,23 @@
-
-import React, { useEffect } from "react";
+import React from "react";
 import { ClipboardList, Users, BadgeCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useIsMobile } from "@/hooks/use-mobile";
 
-const Step: React.FC<{
+interface StepProps {
   number: number;
   title: string;
   description: string;
   icon: React.ReactNode;
   delay: number;
-}> = ({ number, title, description, icon, delay }) => {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add("animate");
-            }, delay);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+}
 
-    const elements = document.querySelectorAll(".reveal-animation");
-    elements.forEach((el) => observer.observe(el));
-
-    return () => {
-      elements.forEach((el) => observer.unobserve(el));
-    };
-  }, [delay]);
-
+const Step: React.FC<StepProps> = ({ number, title, description, icon, delay }) => {
   return (
-    <div className="glass-card p-5 flex items-start gap-4 reveal-animation opacity-0">
-      <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold flex-shrink-0">
-        {number}
+    <div className={`flex items-start gap-4 reveal-animation opacity-0`} style={{ transitionDelay: `${delay}ms` }}>
+      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+        {icon}
       </div>
       <div>
-        <div className="flex items-center gap-2 mb-1">
-          {icon}
-          <h3 className="text-lg font-bold">{title}</h3>
-        </div>
+        <h3 className="text-lg font-semibold mb-2">{title}</h3>
         <p className="text-muted-foreground">{description}</p>
       </div>
     </div>
@@ -50,8 +25,6 @@ const Step: React.FC<{
 };
 
 const HowItWorks: React.FC = () => {
-  const isMobile = useIsMobile();
-
   return (
     <section className="py-12 px-4 bg-muted/30" id="how-it-works">
       <div className="container mx-auto">
@@ -91,17 +64,16 @@ const HowItWorks: React.FC = () => {
             </div>
           </div>
           
-          <div className="glass-card p-3 reveal-animation-right opacity-0 order-1 lg:order-2 shadow-md">
-            <div className="relative w-full h-0 pb-[56.25%] overflow-hidden rounded-lg">
-              <iframe 
-                className="absolute top-0 left-0 w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&loop=1&playlist=dQw4w9WgXcQ" 
-                title="StartupWifi Process"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen>
-              </iframe>
+          <div className="order-1 lg:order-2">
+            <div className="rounded-lg overflow-hidden shadow-lg bg-white">
+              <img 
+                src="/images/pexels-divinetechygirl-1181346.jpg"
+                alt="StartupWifi Planning Process" 
+                className="w-full h-[400px] md:h-[500px] object-cover hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
             </div>
-            <p className="text-sm text-muted-foreground mt-2 text-center">See how StartupWifi works in action</p>
+            <p className="text-sm text-muted-foreground mt-2 text-center">Our comprehensive planning approach to help startups succeed</p>
           </div>
         </div>
       </div>
